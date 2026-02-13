@@ -1,0 +1,604 @@
+/* Primary site styles (migrated from assets/css/styles.css) */
+:root {
+  --wood: #7b4f2a;
+  --wood-dark: #3e2a1b;
+  --ease-custom: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --base-delay: 100ms;
+}
+
+/* ----------------------------------------------------
+   Global Animation System
+   ---------------------------------------------------- */
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Header Scroll Effect */
+header {
+  transition: all 0.4s var(--ease-custom);
+}
+
+header.header-scrolled {
+  background: rgba(26, 18, 11, 0.85);
+  /* More opaque */
+  backdrop-filter: blur(16px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 4rem;
+  /* 16 * 0.25rem = 4rem (h-16) */
+}
+
+header.header-scrolled nav {
+  height: 4rem;
+}
+
+/* Hero Text Reveal */
+.text-reveal-line {
+  overflow: hidden;
+  display: block;
+}
+
+.text-reveal-line span {
+  display: block;
+  transform: translateY(100%);
+  opacity: 0;
+  animation: revealText 0.8s var(--ease-custom) forwards;
+}
+
+@keyframes revealText {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Base Reveal Class (Intersection Observer) */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-custom), transform 0.8s var(--ease-custom);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reveal Variants */
+.reveal.fade-left {
+  transform: translateX(-40px);
+}
+
+.reveal.fade-right {
+  transform: translateX(40px);
+}
+
+.reveal.scale-up {
+  transform: scale(0.9);
+}
+
+.reveal.active.fade-left,
+.reveal.active.fade-right,
+.reveal.active.scale-up {
+  transform: translate(0) scale(1);
+}
+
+/* Stagger Utilities */
+.stagger-children>* {
+  opacity: 0;
+}
+
+.stagger-children.active>* {
+  animation: fadeInUpStagger 0.6s var(--ease-custom) forwards;
+}
+
+@keyframes fadeInUpStagger {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loop to create stagger delays */
+.stagger-children>*:nth-child(1) {
+  animation-delay: 100ms;
+}
+
+.stagger-children>*:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+.stagger-children>*:nth-child(3) {
+  animation-delay: 300ms;
+}
+
+.stagger-children>*:nth-child(4) {
+  animation-delay: 400ms;
+}
+
+.stagger-children>*:nth-child(5) {
+  animation-delay: 500ms;
+}
+
+.stagger-children>*:nth-child(6) {
+  animation-delay: 600ms;
+}
+
+/* Micro-Interactions */
+/* Buttons */
+.hover-lift {
+  transition: transform 0.3s var(--ease-custom), box-shadow 0.3s var(--ease-custom);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+}
+
+.hover-lift:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Cards */
+.hover-card-zoom {
+  overflow: hidden;
+}
+
+.hover-card-zoom img {
+  transition: transform 0.7s var(--ease-custom);
+}
+
+.hover-card-zoom:hover img {
+  transform: scale(1.08);
+}
+
+/* Links */
+.hover-underline-slide {
+  position: relative;
+}
+
+.hover-underline-slide::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--wood);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.hover-underline-slide:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Number Counters */
+.counter-value {
+  font-variant-numeric: tabular-nums;
+}
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial
+}
+
+.text-muted {
+  color: rgba(156, 163, 175, 1)
+}
+
+/* Brand Selection Color */
+::selection {
+  background-color: var(--wood);
+  color: #000;
+}
+
+.card {
+  transition: transform .18s ease, box-shadow .18s ease
+}
+
+.card:hover {
+  transform: translateY(-6px)
+}
+
+.gallery-item img {
+  cursor: pointer
+}
+
+#mobile-nav a {
+  display: block;
+  padding: .5rem 0
+}
+
+/* Modal slider basics */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px
+}
+
+/* Fallback for native selects (Safety Net) */
+select,
+option {
+  background: #141414 !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Scroll Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.fade-left {
+  transform: translateX(-30px);
+}
+
+.reveal.fade-right {
+  transform: translateX(30px);
+}
+
+.reveal.zoom-in {
+  transform: scale(0.95);
+}
+
+.reveal.active.fade-left,
+.reveal.active.fade-right,
+.reveal.active.zoom-in {
+  transform: translate(0) scale(1);
+}
+
+/* Staggered delays for grid items */
+.stagger-1 {
+  transition-delay: 100ms;
+}
+
+.stagger-2 {
+  transition-delay: 200ms;
+}
+
+.stagger-3 {
+  transition-delay: 300ms;
+}
+
+/* WhatsApp Button Style */
+.btn-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #25D366;
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: background-color 0.2s;
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+/* ... existing styles ... */
+
+/* Modern Form Upgrades */
+
+/* Glassmorphism Card */
+.glass-card {
+  background: rgba(26, 18, 11, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transform: skewX(-25deg);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+/* Background Gradients */
+.bg-gradient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  z-index: -1;
+  animation: float-blob 10s infinite alternate;
+}
+
+@keyframes float-blob {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(20px, -20px) scale(1.1);
+  }
+}
+
+/* Floating Label Animation */
+.floating-input:focus~label,
+.floating-input:not(:placeholder-shown)~label {
+  top: -0.75rem;
+  left: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--wood);
+  padding: 0 0.25rem;
+  background-color: #1a120b;
+  /* Match bg to hide line */
+}
+
+/* Focus Effects */
+.input-group:focus-within {
+  transform: scale(1.01);
+}
+
+.input-group:focus-within svg {
+  color: var(--wood);
+}
+
+.input-group {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom Select Arrow */
+.custom-select-wrapper {
+  position: relative;
+}
+
+.custom-select-wrapper::after {
+  content: '▼';
+  font-size: 0.8rem;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+  transition: transform 0.3s;
+}
+
+.custom-select-wrapper:focus-within::after {
+  transform: translateY(-50%) rotate(180deg);
+  color: var(--wood);
+}
+
+/* Step Progress */
+.step-dot {
+  transition: all 0.4s ease;
+}
+
+.step-dot.active {
+  background-color: var(--wood);
+  box-shadow: 0 0 10px var(--wood);
+  border-color: var(--wood);
+}
+
+.step-line {
+  transition: all 0.4s ease;
+}
+
+.step-line.active {
+  background-color: var(--wood);
+}
+
+/* File Upload */
+.file-drop-zone {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  transition: all 0.3s;
+}
+
+.file-drop-zone:hover,
+.file-drop-zone.drag-over {
+  border-color: var(--wood);
+  background: rgba(123, 79, 42, 0.1);
+}
+
+/* Success Animation */
+.checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #7b4f2a;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #7b4f2a;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+
+  0%,
+  100% {
+    transform: none;
+  }
+
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7b4f2a;
+  }
+}
+
+/* Entrance Animations */
+.slide-up-fade {
+  animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes slideUpFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Booking Wizard Styles */
+.progress-bar-fill {
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(123, 79, 42, 0.5);
+}
+
+.step-indicator {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 20;
+  /* Ensure above progress bar */
+}
+
+.step-indicator.active {
+  transform: scale(1.15);
+  box-shadow: 0 0 15px rgba(22, 163, 74, 0.5);
+  /* Green glow for completed/active */
+  border-color: transparent;
+}
+
+/* Premium Card Hover */
+.booking-type-card {
+  transition: all 0.3s ease;
+}
+
+.booking-type-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(123, 79, 42, 0.3);
+}
+
+/* Premium Calculator Animations */
+@keyframes countPop {
+  0% {
+    transform: scale(1);
+    filter: blur(0);
+  }
+
+  50% {
+    transform: scale(1.1);
+    filter: blur(2px);
+    color: var(--wood);
+  }
+
+  100% {
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.count-up.updating {
+  animation: countPop 0.4s ease-out forwards;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}

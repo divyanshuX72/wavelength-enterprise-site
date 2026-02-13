@@ -1,0 +1,15 @@
+:root{--wood:#7b4f2a;--wood-dark:#3e2a1b}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
+.text-muted{color:rgba(156,163,175,1)}
+.card{transition:transform .18s ease,box-shadow .18s ease}
+.card:hover{transform:translateY(-6px)}
+.gallery-item img{cursor:pointer}
+#mobile-nav a{display:block;padding:.5rem 0}
+
+/* Modal slider basics */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;z-index:60}
+.modal img{max-width:90%;max-height:80%;border-radius:8px}
+
+/* small, subtle scrollbar for desktop */
+::-webkit-scrollbar{height:8px;width:8px}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:8px}
