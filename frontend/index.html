@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="assets/css/premium-form.css">
   <link rel="stylesheet" href="assets/css/dropdown.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -426,28 +427,16 @@
               </div>
 
               <!-- Product (Floating Style Same As Other Inputs) -->
-              <div class="premium-input-group flex flex-col justify-center">
-
-                <select name="product" id="p_product"
-                  class="premium-input min-h-[56px] py-3 px-4 pl-10 appearance-none text-white" required>
-                  <option value="" selected disabled hidden></option>
-                  <option value="TV Unit">TV Unit</option>
-                  <option value="Wardrobe">Wardrobe</option>
-                  <option value="Bed">Bed</option>
-                  <option value="Kitchen">Modular Kitchen</option>
-                  <option value="Office">Home Office</option>
-                  <option value="Other">Other Custom Work</option>
-                </select>
-
-                <svg class="input-icon flex items-center h-full" xmlns="http://www.w3.org/2000/svg" fill="none"
-                  viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-
-                <label for="p_product" class="premium-label">
-                  Select Product
-                </label>
-
+              <div class="dd">
+                <button class="dd-btn" type="button">Select Product</button>
+                <div class="dd-list">
+                  <div class="dd-item">TV Unit</div>
+                  <div class="dd-item">Wardrobe</div>
+                  <div class="dd-item">Bed</div>
+                  <div class="dd-item">Modular Kitchen</div>
+                  <div class="dd-item">Home Office</div>
+                  <div class="dd-item">Other Custom Work</div>
+                </div>
               </div>
             </div>
 
