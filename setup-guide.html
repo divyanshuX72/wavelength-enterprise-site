@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Required - Wavelength Enterprises</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c1810 0%, #1a0f0a 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            color: #333;
+        }
+
+        h1 {
+            color: #2c1810;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            color: #d4a574;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            background: #f9f9f9;
+            border-left: 4px solid #d4a574;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .step h2 {
+            color: #2c1810;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .code {
+            background: #2c1810;
+            color: #d4a574;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d4a574;
+            color: #1a0f0a;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #b8935f;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .success {
+            background: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .status.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status.complete {
+            background: #d4edda;
+            color: #155724;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🚀 Setup Required</h1>
+        <p class="subtitle">Enterprise Email System - Database Migration</p>
+
+        <div class="alert">
+            <strong>⚠️ Action Required:</strong> The database tables need to be created before the email system can
+            function.
+        </div>
+
+        <div class="step">
+            <h2>Step 1: Run Database Migration <span class="status pending">PENDING</span></h2>
+            <p>Click the button below to create the required database tables:</p>
+            <a href="config/run_migration.php" class="btn">🔧 Run Migration Script</a>
+            <p style="margin-top: 15px; font-size: 14px; color: #666;">
+                This will create the following tables:
+            </p>
+            <ul style="font-size: 14px; color: #666;">
+                <li><code>form_submissions</code> - Stores all form data</li>
+                <li><code>rate_limit_log</code> - Tracks rate limiting</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h2>Step 2: Configure SMTP Settings</h2>
+            <p>Update your <code>.env</code> file with production SMTP credentials:</p>
+            <div class="code">
+                SMTP_USERNAME=your-email@gmail.com
+                SMTP_PASSWORD=your-app-password
+                ADMIN_EMAIL=admin@wavelengthenterprises.com
+            </div>
+            <p style="font-size: 14px; color: #666;">
+                📌 <strong>Gmail Users:</strong> Generate an App Password from Google Account settings
+            </p>
+        </div>
+
+        <div class="step">
+            <h2>Step 3: Delete Migration File</h2>
+            <p>After successful migration, delete the migration file for security:</p>
+            <div class="code">
+                Delete: config/run_migration.php
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>Step 4: Test Forms</h2>
+            <p>Test the email system with the example forms:</p>
+            <ul>
+                <li><a href="contact-form-complete.php">Contact Form</a></li>
+                <li><a href="quote-form-complete.php">Quote Form</a></li>
+            </ul>
+        </div>
+
+        <div class="alert success" style="margin-top: 30px;">
+            <strong>✅ What's Included:</strong>
+            <ul style="margin-top: 10px;">
+                <li>CSRF Token Protection</li>
+                <li>Honeypot Anti-Spam</li>
+                <li>IP-Based Rate Limiting (3 attempts/60s)</li>
+                <li>Database Logging</li>
+                <li>Admin & Customer Email Notifications</li>
+                <li>XSS & SQL Injection Prevention</li>
+            </ul>
+        </div>
+
+        <div
+            style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #666; font-size: 14px;">
+            <p>📚 <strong>Documentation:</strong> Check the <code>deployment_checklist.md</code> and
+                <code>walkthrough.md</code> files for complete setup instructions.</p>
+        </div>
+    </div>
+</body>
+
+</html>
