@@ -511,7 +511,7 @@
 
   <script src="assets/js/main.js"></script>
   <script src="assets/js/slider.js"></script>
-  <script src="assets/js/form.js"></script>
+  <script src="assets/js/form.js?v=1.2"></script>
   <script src="assets/js/animations.js"></script>
   <script src="assets/js/dropdown.js"></script>
   <script src="assets/js/ai-assistant.js?v=2"></script>

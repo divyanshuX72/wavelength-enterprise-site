@@ -49,6 +49,9 @@ function getMailer() {
         // Character set
         $mail->CharSet = 'UTF-8';
         
+        // Set email format to HTML
+        $mail->isHTML(true);
+        
         return $mail;
     } catch (Exception $e) {
         error_log("Mailer configuration error: " . $e->getMessage());

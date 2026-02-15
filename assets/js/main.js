@@ -451,6 +451,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // 5. Booking Confirmation
+  /* 
+  // Handled by form.js now
   if (btnConfirmBooking) {
     btnConfirmBooking.addEventListener('click', (e) => {
       e.preventDefault();
@@ -464,7 +466,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (progress) progress.classList.add('hidden');
       if (success) success.classList.remove('hidden');
     });
-  }
+  } 
+  */
 
   // Feature 13: Visual Polish & Animations (Intersection Observer)
   const observerOptions = {

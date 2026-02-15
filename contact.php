@@ -1010,7 +1010,7 @@
   <div id="footer-container"></div>
 
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/form-wizard.js"></script>
+  <script src="assets/js/form-wizard.js?v=1.2"></script>
 
 
   <script src="assets/js/animations.js"></script>

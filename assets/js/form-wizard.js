@@ -87,8 +87,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Send to API
             const formData = new FormData(form);
+            formData.append('action', 'get_quote');
 
-            fetch('api/submit_quote.php', {
+            fetch('process_contact.php', {
                 method: 'POST',
                 body: formData
             })
