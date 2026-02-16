@@ -1,10 +1,11 @@
 <?php
+
 /**
  * Database Migration Script
  * Run this file once to create the required tables
  */
 
-require_once __DIR__ . '/db_connection.php';
+require_once __DIR__ . '/config/db_connection.php';
 
 echo "<!DOCTYPE html>
 <html>
@@ -110,7 +111,7 @@ foreach ($tables as $table) {
     $result = $conn->query("SHOW TABLES LIKE '$table'");
     if ($result && $result->num_rows > 0) {
         echo '<div class="success">✅ Table exists: ' . $table . '</div>';
-        
+
         // Show table structure
         $result = $conn->query("DESCRIBE $table");
         if ($result) {
@@ -139,4 +140,3 @@ echo '<p><strong>⚠️ Important:</strong> Delete this file (run_migration.php)
 echo '</body></html>';
 
 $conn->close();
-?>

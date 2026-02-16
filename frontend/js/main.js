@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
-  loadComponent('header-container', 'includes/header.php');
-  loadComponent('footer-container', 'includes/footer.php');
+  loadComponent('header-container', 'backend/includes/header.php');
+  loadComponent('footer-container', 'backend/includes/footer.php');
 
   // Year
   const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
@@ -451,23 +451,92 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // 5. Booking Confirmation
-  /* 
-  // Handled by form.js now
+  // Prevent native form submission (belt-and-suspenders)
+  const bookingWizardForm = document.getElementById('booking-wizard-form');
+  if (bookingWizardForm) {
+    bookingWizardForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+    });
+  }
+
   if (btnConfirmBooking) {
     btnConfirmBooking.addEventListener('click', (e) => {
       e.preventDefault();
+
       const form = document.getElementById('booking-wizard-form');
       const success = document.getElementById('booking-success');
       const nav = document.getElementById('booking-nav');
       const progress = document.getElementById('booking-progress');
 
-      if (form) form.classList.add('hidden');
-      if (nav) nav.classList.add('hidden');
-      if (progress) progress.classList.add('hidden');
-      if (success) success.classList.remove('hidden');
+      // Validate date & time
+      const dateVal = bookingDate ? bookingDate.value : '';
+      const timeVal = bookingTimeInput ? bookingTimeInput.value : '';
+      if (!dateVal || !timeVal) {
+        alert('Please select a Date and Time.');
+        return;
+      }
+
+      // Loading state
+      const originalText = btnConfirmBooking.innerHTML;
+      btnConfirmBooking.disabled = true;
+      btnConfirmBooking.innerHTML = `<svg class="animate-spin h-5 w-5 text-black inline-block mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Processing...`;
+
+      // Gather form data
+      const activeCard = document.querySelector('.visit-card.active');
+      const visitType = activeCard ? activeCard.dataset.type : 'showroom';
+      const formData = {
+        step: 3,
+        type: visitType,
+        data: {
+          address: document.getElementById('bk_address') ? document.getElementById('bk_address').value : '',
+          landmark: document.getElementById('bk_landmark') ? document.getElementById('bk_landmark').value : '',
+          pincode: document.getElementById('bk_pincode') ? document.getElementById('bk_pincode').value : '',
+          locationType: document.getElementById('location_type_input') ? document.getElementById('location_type_input').value : '',
+          date: dateVal,
+          time: timeVal
+        }
+      };
+
+      // Send to API
+      fetch('backend/api/submit_booking.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            // Update success screen details if elements exist
+            const successType = document.getElementById('success-type');
+            const successDate = document.getElementById('success-date');
+            const successTime = document.getElementById('success-time');
+            if (successType) successType.innerText = activeCard ? activeCard.querySelector('h4').textContent : 'Visit';
+            if (successDate) successDate.innerText = dateVal;
+            if (successTime) successTime.innerText = timeVal;
+
+            // Show Success
+            if (form) form.classList.add('hidden');
+            if (nav) nav.classList.add('hidden');
+            if (progress) progress.classList.add('hidden');
+            if (success) success.classList.remove('hidden');
+
+            // Scroll to success
+            const container = document.getElementById('booking-container');
+            if (container) container.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            alert('Booking failed: ' + (data.message || 'Unknown error'));
+            btnConfirmBooking.disabled = false;
+            btnConfirmBooking.innerHTML = originalText;
+          }
+        })
+        .catch(error => {
+          console.error('Booking Error:', error);
+          alert('An error occurred. Please try again.');
+          btnConfirmBooking.disabled = false;
+          btnConfirmBooking.innerHTML = originalText;
+        });
     });
-  } 
-  */
+  }
 
   // Feature 13: Visual Polish & Animations (Intersection Observer)
   const observerOptions = {

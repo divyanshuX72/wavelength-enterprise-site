@@ -11,11 +11,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/tailwind.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <link rel="stylesheet" href="assets/css/calculator.css">
-  <link rel="stylesheet" href="assets/css/dropdown.css">
+  <link rel="stylesheet" href="frontend/css/tailwind.css">
+  <link rel="stylesheet" href="frontend/css/style.css">
+  <link rel="stylesheet" href="frontend/css/responsive.css">
+  <link rel="stylesheet" href="frontend/css/calculator.css">
+  <link rel="stylesheet" href="frontend/css/dropdown.css">
 
   <style>
     .visit-card.active {
@@ -116,7 +116,7 @@
 
 <body class="bg-wood-dark text-gray-100 antialiased font-sans">
 
-  <?php require_once 'includes/header.php'; ?>
+  <?php require_once 'backend/includes/header.php'; ?>
 
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
     <div class="text-center mb-10">
@@ -991,7 +991,7 @@
 
       <!-- Map -->
       <div class="h-96 w-full bg-wood-dark/40 rounded-xl overflow-hidden border border-white/5">
-        <iframe src="https://www.google.com/maps?q=Wavelength%20Enterprises%20Pelhar%20Rd%20Nalasopara&output=embed"
+        <iframe src="https://maps.google.com/maps?width=100%25&amp;height=100%25&amp;hl=en&amp;q=Wavelength%20Enterprises%20Pelhar%20Rd%20Wakanpada%20Nalasopara%20East&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
           width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
@@ -1009,14 +1009,14 @@
 
   <div id="footer-container"></div>
 
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/form-wizard.js?v=1.2"></script>
+  <script src="frontend/js/main.js"></script>
+  <script src="frontend/js/form-wizard.js?v=1.2"></script>
 
 
-  <script src="assets/js/animations.js"></script>
-  <script src="assets/js/slider.js"></script>
-  <script src="assets/js/dropdown.js"></script>
-  <script src="assets/js/calculator.js"></script>
+  <script src="frontend/js/animations.js"></script>
+  <script src="frontend/js/slider.js"></script>
+  <script src="frontend/js/dropdown.js"></script>
+  <script src="frontend/js/calculator.js"></script>
 
 
   <script>

@@ -12,9 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/tailwind.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <link rel="stylesheet" href="assets/css/dropdown.css">
+  <link rel="stylesheet" href="frontend/css/tailwind.css">
+  <link rel="stylesheet" href="frontend/css/responsive.css">
+  <link rel="stylesheet" href="frontend/css/dropdown.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
@@ -25,13 +25,13 @@
 
 <body class="bg-wood-dark text-gray-100 antialiased font-sans">
 
-  <?php require_once 'includes/header.php'; ?>
+  <?php require_once 'backend/includes/header.php'; ?>
 
   <main>
 
     <!-- 1. Hero About Banner -->
     <section class="relative h-[60vh] flex items-center justify-center text-center px-4 bg-fixed bg-cover bg-center"
-      style="background-image: url('assets/images/about-hero.jpg');">
+      style="background-image: url('frontend/images/about-hero.jpg');">
       <div class="absolute inset-0 bg-black/70"></div>
       <div class="relative z-10 max-w-4xl mx-auto reveal zoom-in">
         <span class="text-wood font-bold tracking-wider uppercase text-sm mb-2 block">Since 1972</span>
@@ -52,7 +52,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div class="reveal fade-right">
           <div class="relative">
-            <img src="assets/images/carpenter-work.jpg" alt="Carpenter at work"
+            <img src="frontend/images/carpenter-work.jpg" alt="Carpenter at work"
               class="rounded-xl shadow-2xl border border-white/10">
             <div
               class="absolute -bottom-6 -right-6 bg-wood-dark p-6 rounded-xl border border-wood shadow-xl hidden md:block">
@@ -77,9 +77,9 @@
           </p>
           <div class="flex items-center gap-4">
             <div class="flex -space-x-4">
-              <img class="w-10 h-10 rounded-full border-2 border-wood-dark" src="assets/images/avatar-1.jpg" alt="">
-              <img class="w-10 h-10 rounded-full border-2 border-wood-dark" src="assets/images/avatar-3.jpg" alt="">
-              <img class="w-10 h-10 rounded-full border-2 border-wood-dark" src="assets/images/avatar-4.jpg" alt="">
+              <img class="w-10 h-10 rounded-full border-2 border-wood-dark" src="frontend/images/avatar-1.jpg" alt="">
+              <img class="w-10 h-10 rounded-full border-2 border-wood-dark" src="frontend/images/avatar-3.jpg" alt="">
+              <img class="w-10 h-10 rounded-full border-2 border-wood-dark" src="frontend/images/avatar-4.jpg" alt="">
             </div>
             <span class="text-sm text-muted">Trusted by 500+ Local Families</span>
           </div>
@@ -206,7 +206,7 @@
       <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
         <!-- Item 1 -->
         <a href="products.php" class="group relative rounded-lg overflow-hidden h-40 md:h-64 reveal">
-          <img src="assets/images/ai_tv_unit_1770204842451.png"
+          <img src="frontend/images/ai_tv_unit_1770204842451.png"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="TV Unit">
           <div
             class="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/30 transition-colors">
@@ -215,7 +215,7 @@
         </a>
         <!-- Item 2 -->
         <a href="products.php" class="group relative rounded-lg overflow-hidden h-40 md:h-64 reveal stagger-1">
-          <img src="assets/images/ai_bed_modern_1770204864113.png"
+          <img src="frontend/images/ai_bed_modern_1770204864113.png"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Beds">
           <div
             class="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/30 transition-colors">
@@ -224,7 +224,7 @@
         </a>
         <!-- Item 3 -->
         <a href="products.php" class="group relative rounded-lg overflow-hidden h-40 md:h-64 reveal stagger-2">
-          <img src="assets/images/ai_wardrobe_sleek_1770204884623.png"
+          <img src="frontend/images/ai_wardrobe_sleek_1770204884623.png"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Wardrobes">
           <div
             class="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/30 transition-colors">
@@ -233,7 +233,7 @@
         </a>
         <!-- Item 4 -->
         <a href="products.php" class="group relative rounded-lg overflow-hidden h-40 md:h-64 reveal stagger-3">
-          <img src="assets/images/ai_kitchen_modern_1770204908651.png"
+          <img src="frontend/images/ai_kitchen_modern_1770204908651.png"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Modular">
           <div
             class="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/30 transition-colors">
@@ -243,7 +243,7 @@
         <!-- Item 5 -->
         <a href="products.php"
           class="group relative rounded-lg overflow-hidden h-40 md:h-64 md:col-span-1 col-span-2 reveal stagger-4">
-          <img src="assets/images/custom-console.jpg"
+          <img src="frontend/images/custom-console.jpg"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Custom">
           <div
             class="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/30 transition-colors">
@@ -492,8 +492,9 @@
           <!-- Map -->
           <div class="h-80 w-full bg-wood-dark/40 rounded-xl overflow-hidden border border-white/5">
             <iframe
-              src="https://www.google.com/maps?q=Pelhar%20Rd,%20Wakanpada,%20Nalasopara%20East,%20Vasai-Virar,%20Maharashtra%20401208&output=embed"
-              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+              src="https://maps.google.com/maps?width=100%25&amp;height=100%25&amp;hl=en&amp;q=Wavelength%20Enterprises%20Pelhar%20Rd%20Wakanpada%20Nalasopara%20East&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
         </div>
@@ -644,8 +645,8 @@
     </svg>
   </a>
 
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/animations.js"></script>
+  <script src="frontend/js/main.js"></script>
+  <script src="frontend/js/animations.js"></script>
 </body>
 
 </html>

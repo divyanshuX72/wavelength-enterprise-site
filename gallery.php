@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/tailwind.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/dropdown.css">
+  <link rel="stylesheet" href="frontend/css/tailwind.css">
+  <link rel="stylesheet" href="frontend/css/style.css">
+  <link rel="stylesheet" href="frontend/css/dropdown.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
@@ -22,7 +22,7 @@
 </head>
 
 <body class="bg-wood-dark text-gray-100 antialiased font-sans">
-  <?php require_once 'includes/header.php'; ?>
+  <?php require_once 'backend/includes/header.php'; ?>
 
   <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="text-center mb-10">
@@ -35,9 +35,6 @@
     <div class="flex flex-wrap justify-center gap-3 mb-10 reveal scale-up delay-200">
       <button
         class="filter-btn active px-5 py-2 rounded-full border border-wood bg-wood text-black font-medium transition-all hover:bg-white hover:scale-105"
-        data-filter="all">All</button>
-      <button
-        class="filter-btn px-5 py-2 rounded-full border border-gray-600 text-gray-300 transition-all hover:border-wood hover:text-wood hover:scale-105"
         data-filter="tv">TV Units</button>
       <button
         class="filter-btn px-5 py-2 rounded-full border border-gray-600 text-gray-300 transition-all hover:border-wood hover:text-wood hover:scale-105"
@@ -61,7 +58,7 @@
       <!-- TV Units -->
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="tv">
-        <img src="assets/images/ai_tv_unit_1770204842451.png"
+        <img src="frontend/images/ai_tv_unit_1770204842451.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="TV Unit 1">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -72,7 +69,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="tv">
-        <img src="assets/images/tv-unit-wall.jpg"
+        <img src="frontend/images/tv-unit-wall.jpg"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="TV Unit 2">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -83,7 +80,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="tv">
-        <img src="assets/images/tv-unit-modern.jpg"
+        <img src="frontend/images/tv-unit-modern.jpg"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="TV Unit 3">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -97,7 +94,7 @@
       <!-- Beds -->
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="beds">
-        <img src="assets/images/ai_bed_modern_1770204864113.png"
+        <img src="frontend/images/ai_bed_modern_1770204864113.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Bed 1">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -108,7 +105,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="beds">
-        <img src="assets/images/bed-modern.jpg"
+        <img src="frontend/images/bed-modern.jpg"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Bed 2">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -119,7 +116,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="beds">
-        <img src="assets/images/bed-canopy.jpg"
+        <img src="frontend/images/bed-canopy.jpg"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Bed 3">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -130,7 +127,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="beds">
-        <img src="assets/images/bedroom-1.jpg"
+        <img src="frontend/images/bedroom-1.jpg"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Bed 4">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -141,7 +138,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="beds">
-        <img src="assets/images/ai_full_bedroom_after_1770206111031.png"
+        <img src="frontend/images/ai_full_bedroom_after_1770206111031.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Bed 5">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -154,7 +151,7 @@
       <!-- Wardrobes -->
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="wardrobes">
-        <img src="assets/images/ai_wardrobe_sleek_1770204884623.png"
+        <img src="frontend/images/ai_wardrobe_sleek_1770204884623.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Wardrobe 1">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -165,7 +162,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="wardrobes">
-        <img src="assets/images/wardrobe-builtin.jpg"
+        <img src="frontend/images/wardrobe-builtin.jpg"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Wardrobe 2">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -176,7 +173,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="wardrobes">
-        <img src="assets/images/wardrobe-walkin.jpg"
+        <img src="frontend/images/wardrobe-walkin.jpg"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Wardrobe 3">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -187,7 +184,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="wardrobes">
-        <img src="assets/images/wardrobe-classic.jpg"
+        <img src="frontend/images/wardrobe-classic.jpg"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Wardrobe 4">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -201,7 +198,7 @@
       <!-- Custom Work -->
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="custom">
-        <img src="assets/images/custom-study.jpg"
+        <img src="frontend/images/custom-study.jpg"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Custom 1">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -212,7 +209,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="custom">
-        <img src="assets/images/custom-console.jpg"
+        <img src="frontend/images/custom-console.jpg"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Custom 2">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -223,7 +220,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="custom">
-        <img src="assets/images/ai_kitchen_modern_1770204908651.png"
+        <img src="frontend/images/ai_kitchen_modern_1770204908651.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Custom 3">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -234,7 +231,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="custom">
-        <img src="assets/images/kitchen-modular.jpg"
+        <img src="frontend/images/kitchen-modular.jpg"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Custom 5">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -245,7 +242,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="custom">
-        <img src="assets/images/dining-1.jpg"
+        <img src="frontend/images/dining-1.jpg"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Custom 7">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -259,7 +256,7 @@
 
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="office">
-        <img src="assets/images/office_desk_executive_1771023315997.png"
+        <img src="frontend/images/office_desk_executive_1771023315997.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Office 4">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -270,7 +267,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="office">
-        <img src="assets/images/office_workstation_modern_1771023329722.png"
+        <img src="frontend/images/office_workstation_modern_1771023329722.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Office 5">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -281,7 +278,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="office">
-        <img src="assets/images/office_cabinet_storage_1771023348187.png"
+        <img src="frontend/images/office_cabinet_storage_1771023348187.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Office 6">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -292,7 +289,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="office">
-        <img src="assets/images/office_conference_table_1771023364208.png"
+        <img src="frontend/images/office_conference_table_1771023364208.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Office 7">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -303,7 +300,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="office">
-        <img src="assets/images/office_reception_desk_1771023380183.png"
+        <img src="frontend/images/office_reception_desk_1771023380183.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Office 8">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -314,7 +311,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="office">
-        <img src="assets/images/office_executive_desk_1771023414214.png"
+        <img src="frontend/images/office_executive_desk_1771023414214.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Office 9">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -325,7 +322,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="office">
-        <img src="assets/images/office_computer_workstation_1771023436552.png"
+        <img src="frontend/images/office_computer_workstation_1771023436552.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Office 10">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -336,7 +333,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="office">
-        <img src="assets/images/office_conference_table_1771023456802.png"
+        <img src="frontend/images/office_conference_table_1771023456802.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Office 11">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -347,7 +344,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="office">
-        <img src="assets/images/office_storage_cabinet_1771023472767.png"
+        <img src="frontend/images/office_storage_cabinet_1771023472767.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Office 12">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -358,7 +355,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="office">
-        <img src="assets/images/office_executive_setup_1771023487973.png"
+        <img src="frontend/images/office_executive_setup_1771023487973.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Office 13">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -372,7 +369,7 @@
       <!-- Modular Kitchen -->
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/ai_kitchen_modern_1770204908651.png"
+        <img src="frontend/images/ai_kitchen_modern_1770204908651.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 1">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -384,7 +381,7 @@
 
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/modular_kitchen_luxury_black_1771021260305.png"
+        <img src="frontend/images/modular_kitchen_luxury_black_1771021260305.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 4">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -395,7 +392,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/modular_kitchen_contemporary_white_1771021275709.png"
+        <img src="frontend/images/modular_kitchen_contemporary_white_1771021275709.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 5">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -406,7 +403,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/modular_kitchen_premium_navy_1771021294369.png"
+        <img src="frontend/images/modular_kitchen_premium_navy_1771021294369.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 6">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -417,7 +414,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/luxury_modular_kitchen_1_1771021323970.png"
+        <img src="frontend/images/luxury_modular_kitchen_1_1771021323970.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 7">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -428,7 +425,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/luxury_modular_kitchen_2_1771021341900.png"
+        <img src="frontend/images/luxury_modular_kitchen_2_1771021341900.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 8">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -439,7 +436,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/luxury_modular_kitchen_1_1771021410637.png"
+        <img src="frontend/images/luxury_modular_kitchen_1_1771021410637.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 9">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -450,7 +447,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/luxury_modular_kitchen_2_1771021426585.png"
+        <img src="frontend/images/luxury_modular_kitchen_2_1771021426585.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 10">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -461,7 +458,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/luxury_modular_kitchen_3_1771021442510.png"
+        <img src="frontend/images/luxury_modular_kitchen_3_1771021442510.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 11">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -472,7 +469,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/luxury_modular_kitchen_1_1771021473377.png"
+        <img src="frontend/images/luxury_modular_kitchen_1_1771021473377.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 12">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -483,7 +480,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/luxury_modular_kitchen_2_1771021491843.png"
+        <img src="frontend/images/luxury_modular_kitchen_2_1771021491843.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 13">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -494,7 +491,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/luxury_modular_kitchen_3_1771021509355.png"
+        <img src="frontend/images/luxury_modular_kitchen_3_1771021509355.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 14">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -505,7 +502,7 @@
       </div>
       <div class="gallery-item group relative overflow-hidden rounded-xl h-64 cursor-pointer hover-card-zoom"
         data-category="kitchen">
-        <img src="assets/images/luxury_kitchen_minimalist_1771021535742.png"
+        <img src="frontend/images/luxury_kitchen_minimalist_1771021535742.png"
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kitchen 15">
         <div
           class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -662,9 +659,9 @@
 
   <div id="footer-container"></div>
 
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/gallery.js"></script>
-  <script src="assets/js/animations.js"></script>
+  <script src="frontend/js/main.js"></script>
+  <script src="frontend/js/gallery.js"></script>
+  <script src="frontend/js/animations.js"></script>
 </body>
 
 </html>

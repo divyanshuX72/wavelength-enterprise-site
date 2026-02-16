@@ -9,7 +9,7 @@ $products = [
         'price_start' => '35,000',
         'material' => 'Solid Teak / Oak Veneer',
         'sizes' => '1.5m, 1.8m, 2.2m (Custom)',
-        'image_path' => 'assets/images/ai_tv_unit_1770204842451.png'
+        'image_path' => 'frontend/images/ai_tv_unit_1770204842451.png'
     ],
     [
         'name' => 'Platform Bed — Zen',
@@ -17,7 +17,7 @@ $products = [
         'price_start' => '28,000',
         'material' => 'Walnut / Maple',
         'sizes' => 'Queen, King, California King',
-        'image_path' => 'assets/images/ai_bed_modern_1770204864113.png'
+        'image_path' => 'frontend/images/ai_bed_modern_1770204864113.png'
     ],
     [
         'name' => 'Wardrobe — Signature',
@@ -25,7 +25,7 @@ $products = [
         'price_start' => '18,000/meter',
         'material' => 'HDF / Plywood',
         'sizes' => 'Custom Floor-to-Ceiling',
-        'image_path' => 'assets/images/ai_wardrobe_sleek_1770204884623.png'
+        'image_path' => 'frontend/images/ai_wardrobe_sleek_1770204884623.png'
     ]
 ];
 
@@ -38,7 +38,7 @@ foreach ($products as $product) {
         $material = $conn->real_escape_string($product['material']);
         $sizes = $conn->real_escape_string($product['sizes']);
         $image = $conn->real_escape_string($product['image_path']);
-        
+
         $sql = "INSERT INTO products (name, category, price_start, material, sizes, image_path) 
                 VALUES ('$name', '$category', '$price', '$material', '$sizes', '$image')";
         if ($conn->query($sql) === TRUE) {
@@ -81,7 +81,7 @@ foreach ($services as $service) {
     if ($check->num_rows == 0) {
         $desc = $conn->real_escape_string($service['description']);
         $icon = $conn->real_escape_string($service['icon']);
-        
+
         $sql = "INSERT INTO services (title, description, icon) VALUES ('$title', '$desc', '$icon')";
         if ($conn->query($sql) === TRUE) {
             echo "Inserted service: $title\n";
@@ -95,4 +95,3 @@ foreach ($services as $service) {
 
 echo "Seeding completed.\n";
 $conn->close();
-?>

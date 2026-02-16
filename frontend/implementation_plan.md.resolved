@@ -1,0 +1,90 @@
+# AI Assistant Upgrade — LLM-Powered Interior Design Chatbot
+
+## Goal
+Upgrade the rule-based chatbot in [ai-assistant.js](file:///c:/xampp/htdocs/wavelength-enterprise-site/wavelength-enterprise-site/frontend/js/ai-assistant.js) to a **fully LLM-powered AI assistant** using **Google Gemini API** (free tier). The assistant will:
+- Provide product recommendations with **images, prices, and details**
+- Support **all major Indian languages** (Hindi, Marathi, Tamil, Telugu, Bengali, Gujarati, Kannada, Malayalam, Punjabi, English)
+- **Auto-update** when products/prices change in the database
+- Handle **spelling mistakes** and understand intent (e.g., "ty" → TV Unit)
+- Be an **interior design expert** trained on furniture knowledge
+
+## Architecture
+
+```mermaid
+graph LR
+    A[User Message] --> B[ai-assistant.js]
+    B -->|fetch POST| C[backend/api/ai-chat.php]
+    C -->|1. Load products| D[(MySQL DB)]
+    C -->|2. Build system prompt| E[System Prompt + Products]
+    C -->|3. Send to API| F[Google Gemini API]
+    F -->|4. AI Response| C
+    C -->|5. JSON with text + products| B
+    B -->|6. Render cards| A
+```
+
+> [!IMPORTANT]
+> **Google Gemini API Key Required**: You will need a free API key from [Google AI Studio](https://aistudio.google.com/apikey). The free tier allows **15 requests/minute** and **1,500 requests/day**, which is more than enough for a business website chatbot.
+
+## Proposed Changes
+
+### Backend API
+
+#### [NEW] [ai-chat.php](file:///c:/xampp/htdocs/wavelength-enterprise-site/wavelength-enterprise-site/backend/api/ai-chat.php)
+PHP endpoint that handles AI chat requests:
+- Loads **all products and services** from MySQL database on every request (auto-update)
+- Builds a comprehensive **system prompt** with:
+  - Full product catalog (names, prices, materials, sizes, images)
+  - Interior design expertise knowledge
+  - Multi-language instruction (respond in the user's language)
+  - Spelling tolerance instruction
+  - Response format instruction (JSON with text + product recommendations)
+- Sends the conversation to **Google Gemini API** (`gemini-2.0-flash`)
+- Returns structured JSON with AI response text + matched product cards
+
+#### [MODIFY] [.env](file:///c:/xampp/htdocs/wavelength-enterprise-site/wavelength-enterprise-site/.env)
+Add Gemini API key:
+```
+GEMINI_API_KEY=your_api_key_here
+```
+
+---
+
+### Frontend
+
+#### [MODIFY] [ai-assistant.js](file:///c:/xampp/htdocs/wavelength-enterprise-site/wavelength-enterprise-site/frontend/js/ai-assistant.js)
+Complete rewrite of the response logic:
+- **Remove** all hardcoded [getResponse()](file:///c:/xampp/htdocs/wavelength-enterprise-site/wavelength-enterprise-site/frontend/js/ai-assistant.js#249-329) rules
+- **Add** `fetch()` to `backend/api/ai-chat.php` with user message + conversation history
+- **Parse** structured JSON response to render:
+  - AI text response (supports Hindi/Marathi/any language)
+  - Product recommendation cards with image, name, price, material
+  - Quick action buttons (Get Quote, WhatsApp)
+- **Maintain** conversation history for context-aware multi-turn chat
+- **Keep** existing UI (modal, chat bubbles, animations) — only replacing logic
+- **Add** language selector chips (Hindi, English, Marathi, etc.)
+- **Add** loading state with "Thinking..." indicator
+
+---
+
+### Key Features
+
+| Feature | Implementation |
+|---|---|
+| **Multi-language** | System prompt instructs Gemini to detect and reply in user's language |
+| **Spelling tolerance** | Gemini naturally handles typos; system prompt reinforces fuzzy matching |
+| **Product images** | Backend sends image paths with response; frontend renders product cards |
+| **Auto-update prices** | Products loaded from DB on every request; no hardcoding |
+| **Interior design expert** | System prompt contains comprehensive interior design knowledge |
+| **Conversation memory** | Frontend maintains chat history array, sends last 10 messages for context |
+
+## Verification Plan
+
+### Manual Verification
+1. Test English query: "Show me TV units"
+2. Test Hindi query: "मुझे TV unit दिखाओ"
+3. Test Marathi query: "वॉर्डरोब दाखवा"
+4. Test spelling mistake: "ty unit chahiye" / "bed dikao"
+5. Test price inquiry: "wardrobe ka price kya hai"
+6. Test multi-turn: "I want a bed" → "What sizes do you have?"
+7. Verify product cards show images and prices
+8. Update a product price in DB → verify AI shows new price

@@ -13,11 +13,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/tailwind.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <link rel="stylesheet" href="assets/css/premium-form.css">
-  <link rel="stylesheet" href="assets/css/dropdown.css">
+  <link rel="stylesheet" href="frontend/css/tailwind.css">
+  <link rel="stylesheet" href="frontend/css/style.css">
+  <link rel="stylesheet" href="frontend/css/responsive.css">
+  <link rel="stylesheet" href="frontend/css/premium-form.css">
+  <link rel="stylesheet" href="frontend/css/dropdown.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
@@ -26,12 +26,12 @@
 </head>
 
 <body class="bg-wood-dark text-gray-100 antialiased font-sans">
-  <?php require_once 'includes/header.php'; ?>
+  <?php require_once 'backend/includes/header.php'; ?>
 
   <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <!-- Hero Showcase -->
     <section class="relative bg-cover bg-center flex items-center justify-center text-center text-white overflow-hidden"
-      style="background-image:url('assets/images/ai_tv_unit_1770204842451.png'); min-height:56vh;">
+      style="background-image:url('frontend/images/ai_tv_unit_1770204842451.png'); min-height:56vh;">
       <div class="absolute inset-0 bg-black/60"></div>
       <div class="relative z-10 px-6 py-20 max-w-4xl">
         <h2 class="text-2xl sm:text-4xl font-extrabold text-reveal-line">
@@ -60,14 +60,14 @@
         class="relative w-full max-w-4xl mx-auto h-[400px] rounded-2xl overflow-hidden border border-gray-700 shadow-2xl select-none group reveal zoom-in"
         id="comparison-container">
         <!-- After Image (Background) -->
-        <img src="assets/images/ai_full_bedroom_after_1770206111031.png"
+        <img src="frontend/images/ai_full_bedroom_after_1770206111031.png"
           class="absolute inset-0 w-full h-full object-cover" alt="After Transformation">
         <span
           class="absolute top-4 right-4 bg-wood text-black text-xs font-bold px-3 py-1 rounded shadow z-10">AFTER</span>
 
         <!-- Before Image (Foreground, clipped) -->
         <div class="absolute inset-0 w-1/2 overflow-hidden border-r-2 border-wood bg-black" id="before-image">
-          <img src="assets/images/ai_empty_bedroom_before_1770206092743.png"
+          <img src="frontend/images/ai_empty_bedroom_before_1770206092743.png"
             class="absolute inset-0 w-full h-full object-cover max-w-none" style="width: 100%; height: 100%;"
             alt="Before Transformation">
           <span
@@ -96,7 +96,7 @@
         <div
           class="group relative bg-wood-dark/40 rounded-xl overflow-hidden shadow-lg border border-white/5 hover:border-wood/30 transition-all duration-300 hover:-translate-y-1 hover-card-zoom">
           <div class="overflow-hidden h-64">
-            <img src="assets/images/ai_tv_unit_1770204842451.png" alt="TV Units" class="w-full h-full object-cover">
+            <img src="frontend/images/ai_tv_unit_1770204842451.png" alt="TV Units" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
             <h3 class="text-xl font-semibold text-white group-hover:text-wood transition-colors">TV Units</h3>
@@ -112,7 +112,7 @@
         <div
           class="group relative bg-wood-dark/40 rounded-xl overflow-hidden shadow-lg border border-white/5 hover:border-wood/30 transition-all duration-300 hover:-translate-y-1 hover-card-zoom">
           <div class="overflow-hidden h-64">
-            <img src="assets/images/ai_bed_modern_1770204864113.png" alt="Beds" class="w-full h-full object-cover">
+            <img src="frontend/images/ai_bed_modern_1770204864113.png" alt="Beds" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
             <h3 class="text-xl font-semibold text-white group-hover:text-wood transition-colors">Beds</h3>
@@ -127,7 +127,7 @@
         <div
           class="group relative bg-wood-dark/40 rounded-xl overflow-hidden shadow-lg border border-white/5 hover:border-wood/30 transition-all duration-300 hover:-translate-y-1 hover-card-zoom">
           <div class="overflow-hidden h-64">
-            <img src="assets/images/ai_wardrobe_sleek_1770204884623.png" alt="Wardrobes"
+            <img src="frontend/images/ai_wardrobe_sleek_1770204884623.png" alt="Wardrobes"
               class="w-full h-full object-cover">
           </div>
           <div class="p-6">
@@ -143,7 +143,7 @@
         <div
           class="group relative bg-wood-dark/40 rounded-xl overflow-hidden shadow-lg border border-white/5 hover:border-wood/30 transition-all duration-300 hover:-translate-y-1 hover-card-zoom">
           <div class="overflow-hidden h-64">
-            <img src="assets/images/ai_kitchen_modern_1770204908651.png" alt="Modular Kitchen"
+            <img src="frontend/images/ai_kitchen_modern_1770204908651.png" alt="Modular Kitchen"
               class="w-full h-full object-cover">
           </div>
           <div class="p-6">
@@ -160,7 +160,7 @@
         <div
           class="group relative bg-wood-dark/40 rounded-xl overflow-hidden shadow-lg border border-white/5 hover:border-wood/30 transition-all duration-300 hover:-translate-y-1 hover-card-zoom">
           <div class="overflow-hidden h-64">
-            <img src="assets/images/ai_office_setup_1770204927242.png" alt="Office Furniture"
+            <img src="frontend/images/ai_office_setup_1770204927242.png" alt="Office Furniture"
               class="w-full h-full object-cover">
           </div>
           <div class="p-6">
@@ -189,7 +189,7 @@
         <div
           class="bg-wood-dark/40 border border-white/5 p-6 rounded-xl hover:bg-wood-dark/60 transition-colors hover-lift">
           <div class="flex items-center gap-4 mb-4">
-            <img src="assets/images/avatar-1.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-wood"
+            <img src="frontend/images/avatar-1.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-wood"
               alt="Client">
             <div>
               <h4 class="font-bold text-white text-sm">Amit Sharma</h4>
@@ -208,7 +208,7 @@
         <div
           class="bg-wood-dark/40 border border-white/5 p-6 rounded-xl hover:bg-wood-dark/60 transition-colors hover-lift">
           <div class="flex items-center gap-4 mb-4">
-            <img src="assets/images/avatar-2.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-wood"
+            <img src="frontend/images/avatar-2.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-wood"
               alt="Client">
             <div>
               <h4 class="font-bold text-white text-sm">Priya Patel</h4>
@@ -227,7 +227,7 @@
         <div
           class="bg-wood-dark/40 border border-white/5 p-6 rounded-xl hover:bg-wood-dark/60 transition-colors hover-lift">
           <div class="flex items-center gap-4 mb-4">
-            <img src="assets/images/avatar-3.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-wood"
+            <img src="frontend/images/avatar-3.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-wood"
               alt="Client">
             <div>
               <h4 class="font-bold text-white text-sm">Rahul Verma</h4>
@@ -251,7 +251,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
         <!-- Product card -->
         <article class="bg-wood-dark/60 rounded-lg overflow-hidden to-shadow-lg hover-card-zoom hover-lift">
-          <img loading="lazy" src="assets/images/ai_tv_unit_1770204842451.png" alt="TV Unit Classic"
+          <img loading="lazy" src="frontend/images/ai_tv_unit_1770204842451.png" alt="TV Unit Classic"
             class="w-full h-48 object-cover">
           <div class="p-4">
             <h3 class="font-semibold">TV Unit — Classic</h3>
@@ -265,7 +265,7 @@
         </article>
         <!-- Repeat a few products -->
         <article class="bg-wood-dark/60 rounded-lg overflow-hidden shadow-lg hover-card-zoom hover-lift">
-          <img loading="lazy" src="assets/images/ai_bed_modern_1770204864113.png" alt="Platform Bed"
+          <img loading="lazy" src="frontend/images/ai_bed_modern_1770204864113.png" alt="Platform Bed"
             class="w-full h-48 object-cover">
           <div class="p-4">
             <h3 class="font-semibold">Platform Bed</h3>
@@ -278,7 +278,7 @@
           </div>
         </article>
         <article class="bg-wood-dark/60 rounded-lg overflow-hidden shadow-lg hover-card-zoom hover-lift">
-          <img loading="lazy" src="assets/images/wardrobe-builtin.jpg" alt="Wardrobe Slim"
+          <img loading="lazy" src="frontend/images/wardrobe-builtin.jpg" alt="Wardrobe Slim"
             class="w-full h-48 object-cover">
           <div class="p-4">
             <h3 class="font-semibold">Wardrobe — Slim</h3>
@@ -484,21 +484,58 @@
 
   <!-- WhatsApp floating button -->
   <!-- Floating Action Buttons -->
-  <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
+  <style>
+    @keyframes quoteGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 15px rgba(123, 79, 42, 0.4);
+      }
+
+      50% {
+        box-shadow: 0 4px 25px rgba(123, 79, 42, 0.7), 0 0 15px rgba(123, 79, 42, 0.3);
+      }
+    }
+
+    @keyframes whatsappGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      }
+
+      50% {
+        box-shadow: 0 4px 25px rgba(37, 211, 102, 0.7), 0 0 15px rgba(37, 211, 102, 0.3);
+      }
+    }
+
+    .fab-quote {
+      animation: quoteGlow 2.5s ease-in-out infinite;
+    }
+
+    .fab-whatsapp {
+      animation: whatsappGlow 2.5s ease-in-out infinite;
+    }
+  </style>
+  <div style="position:fixed; bottom:24px; right:24px; display:flex; flex-direction:column; gap:12px; z-index:50;">
     <!-- Get Quote -->
-    <a href="contact.html#quote"
-      class="flex items-center justify-center w-14 h-14 bg-wood text-black rounded-full shadow-lg hover:scale-110 transition-transform"
+    <a href="contact#quote"
+      class="fab-quote"
+      style="display:flex; align-items:center; justify-content:center; width:56px; height:56px; background:#7b4f2a; color:black; border-radius:9999px; transition:transform 0.3s;"
+      onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
       title="Get Instant Quote">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
       </svg>
     </a>
     <!-- WhatsApp -->
-    <a href="https://wa.me/9373154925" target="_blank"
-      class="flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-lg hover:scale-110 transition-transform"
+    <a href="https://wa.me/919373154925" target="_blank"
+      class="fab-whatsapp"
+      style="display:flex; align-items:center; justify-content:center; width:56px; height:56px; background:#25D366; color:white; border-radius:9999px; transition:transform 0.3s;"
+      onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
       title="Chat on WhatsApp">
-      <svg class="h-8 w-8 fill-current" viewBox="0 0 24 24">
+      <svg style="width:32px;height:32px;" fill="currentColor" viewBox="0 0 24 24">
         <path
           d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
       </svg>
@@ -509,12 +546,12 @@
     <!-- Footer Section moved to components/footer.html -->
   </div>
 
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/slider.js"></script>
-  <script src="assets/js/form.js?v=1.2"></script>
-  <script src="assets/js/animations.js"></script>
-  <script src="assets/js/dropdown.js"></script>
-  <script src="assets/js/ai-assistant.js?v=2"></script>
+  <script src="frontend/js/main.js"></script>
+  <script src="frontend/js/slider.js"></script>
+  <script src="frontend/js/form.js?v=1.2"></script>
+  <script src="frontend/js/animations.js"></script>
+  <script src="frontend/js/dropdown.js"></script>
+  <script src="frontend/js/ai-assistant.js?v=2"></script>
 </body>
 
 </html>

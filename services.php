@@ -10,15 +10,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/tailwind.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="frontend/css/tailwind.css">
+  <link rel="stylesheet" href="frontend/css/style.css">
+  <link rel="stylesheet" href="frontend/css/responsive.css">
 
-  <link rel="stylesheet" href="assets/css/tailwind.css">
-  <link rel="stylesheet" href="assets/css/dropdown.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <link rel="stylesheet" href="assets/css/dropdown.css">
+  <link rel="stylesheet" href="frontend/css/tailwind.css">
+  <link rel="stylesheet" href="frontend/css/dropdown.css">
+  <link rel="stylesheet" href="frontend/css/style.css">
+  <link rel="stylesheet" href="frontend/css/responsive.css">
+  <link rel="stylesheet" href="frontend/css/dropdown.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
@@ -27,7 +27,7 @@
 </head>
 
 <body class="bg-wood-dark text-gray-100 antialiased font-sans">
-  <?php require_once 'includes/header.php'; ?>
+  <?php require_once 'backend/includes/header.php'; ?>
 
   <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="text-center mb-16">
@@ -39,7 +39,7 @@
     <!-- Services Grid -->
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
       <?php
-      require_once 'config/db_connection.php';
+      require_once 'backend/config/db_connection.php';
       
       $sql = "SELECT * FROM services ORDER BY id ASC";
       $result = $conn->query($sql);
@@ -210,7 +210,7 @@
           class="material-card bg-wood-dark border border-gray-700 rounded-xl p-1 overflow-hidden group text-left transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-wood"
           data-desc="High-strength structural wood. Ideal for robust furniture frames and moisture-prone areas like kitchens.">
           <div
-            class="h-32 w-full rounded-lg bg-[url('assets/images/mat-plywood.jpg')] bg-cover bg-center mb-3 group-hover:opacity-80 transition-opacity">
+            class="h-32 w-full rounded-lg bg-[url('frontend/images/mat-plywood.jpg')] bg-cover bg-center mb-3 group-hover:opacity-80 transition-opacity">
           </div>
           <div class="px-3 pb-3">
             <h3 class="font-semibold text-white">BWP Plywood</h3>
@@ -234,7 +234,7 @@
           class="material-card bg-wood-dark border border-gray-700 rounded-xl p-1 overflow-hidden group text-left transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-wood"
           data-desc="Premium solid wood known for its durability, weather resistance, and beautiful grain patterns.">
           <div
-            class="h-32 w-full rounded-lg bg-[url('assets/images/mat-teak.jpg')] bg-cover bg-center mb-3 group-hover:opacity-80 transition-opacity">
+            class="h-32 w-full rounded-lg bg-[url('frontend/images/mat-teak.jpg')] bg-cover bg-center mb-3 group-hover:opacity-80 transition-opacity">
           </div>
           <div class="px-3 pb-3">
             <h3 class="font-semibold text-white">Burma Teak</h3>
@@ -300,9 +300,9 @@
         document.getElementById('year').textContent = new Date().getFullYear();
       });
   </script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/animations.js"></script>
-  <script src="assets/js/dropdown.js"></script>
+  <script src="frontend/js/main.js"></script>
+  <script src="frontend/js/animations.js"></script>
+  <script src="frontend/js/dropdown.js"></script>
 </body>
 
 </html>

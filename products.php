@@ -11,20 +11,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/tailwind.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="frontend/css/tailwind.css">
+  <link rel="stylesheet" href="frontend/css/style.css">
+  <link rel="stylesheet" href="frontend/css/responsive.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="icon" href="data:,"><!-- placeholder favicon -->
-  <link rel="stylesheet" href="assets/css/dropdown.css">
+  <link rel="stylesheet" href="frontend/css/dropdown.css">
 
 </head>
 
 <body class="bg-wood-dark text-gray-100 antialiased font-sans">
 
-  <?php require_once 'includes/header.php'; ?>
+  <?php require_once 'backend/includes/header.php'; ?>
 
   <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="text-center mb-12">
@@ -37,7 +37,7 @@
     <!-- Product Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
       <?php
-      require_once 'config/db_connection.php';
+      require_once 'backend/config/db_connection.php';
       
       $category_filter = isset($_GET['category']) ? $conn->real_escape_string($_GET['category']) : '';
       $sql = "SELECT * FROM products";
@@ -250,8 +250,8 @@
   </a>
 
   <div id="footer-container"></div>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/animations.js"></script>
+  <script src="frontend/js/main.js"></script>
+  <script src="frontend/js/animations.js"></script>
   <script>
     // URL Parameter Filtering Logic
     document.addEventListener('DOMContentLoaded', () => {
@@ -284,7 +284,7 @@
       }
     });
   </script>
-  <script src="assets/js/product-modal.js"></script>
+  <script src="frontend/js/product-modal.js"></script>
 
   <!-- Quick View Modal -->
   <div id="quick-view-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center">

@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const formData = new FormData(form);
             formData.append('action', 'get_quote');
 
-            fetch('process_contact.php', {
+            fetch('backend/process_contact.php', {
                 method: 'POST',
                 body: formData
             })
