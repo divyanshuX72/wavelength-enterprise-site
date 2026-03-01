@@ -1,7 +1,479 @@
-/* Responsive-specific tweaks */
-@media (max-width:640px){
-  .text-3xl{font-size:1.75rem}
-  .h-48{height:12rem}
+/* ==========================================================
+   MOBILE-FIRST RESPONSIVE SYSTEM
+   Wavelength Enterprises — Premium Mobile Experience
+   ========================================================== */
+
+/* --- 1. Design Tokens (8pt Grid Spacing) --- */
+:root {
+  --space-1: 0.5rem;    /* 8px */
+  --space-2: 1rem;      /* 16px */
+  --space-3: 1.5rem;    /* 24px */
+  --space-4: 2rem;      /* 32px */
+  --space-5: 2.5rem;    /* 40px */
+  --space-6: 3rem;      /* 48px */
+  --space-8: 4rem;      /* 64px */
+  --space-10: 5rem;     /* 80px */
+  --space-12: 6rem;     /* 96px */
+
+  /* Safe-area fallbacks */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  /* Responsive container padding */
+  --container-pad: var(--space-2);
 }
 
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media (min-width: 640px) {
+  :root { --container-pad: var(--space-3); }
+}
+@media (min-width: 1024px) {
+  :root { --container-pad: var(--space-4); }
+}
+
+/* --- 2. Global Overflow Prevention --- */
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport for mobile browsers */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video, iframe, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Scroll lock when drawer is open */
+body.drawer-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/* --- 3. Responsive Typography (clamp) --- */
+h1, .text-h1 {
+  font-size: clamp(1.75rem, 5vw + 0.5rem, 3.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h2, .text-h2 {
+  font-size: clamp(1.375rem, 4vw + 0.25rem, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+h3, .text-h3 {
+  font-size: clamp(1.125rem, 3vw + 0.125rem, 1.5rem);
+  line-height: 1.3;
+}
+
+h4, .text-h4 {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.4;
+}
+
+p, li, .text-body {
+  font-size: clamp(0.875rem, 2vw + 0.125rem, 1rem);
+  line-height: 1.6;
+}
+
+.text-sm, small {
+  font-size: clamp(0.75rem, 1.5vw + 0.125rem, 0.875rem);
+}
+
+/* --- 4. Mobile Drawer Navigation --- */
+#mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(85vw, 320px);
+  background: rgba(20, 14, 10, 0.97);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-left: 1px solid rgba(123, 79, 42, 0.2);
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: var(--space-8) var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#mobile-nav-drawer.open {
+  transform: translateX(0);
+}
+
+/* Drawer backdrop overlay */
+#drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Drawer nav links */
+#mobile-nav-drawer a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-1);
+  min-height: 48px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: color 0.2s ease, background 0.2s ease, padding-left 0.2s ease;
+  border-radius: 8px;
+}
+
+#mobile-nav-drawer a:hover,
+#mobile-nav-drawer a:active {
+  color: var(--wood);
+  background: rgba(123, 79, 42, 0.1);
+  padding-left: var(--space-3);
+}
+
+#mobile-nav-drawer a.active-link {
+  color: var(--wood);
+  font-weight: 600;
+  border-left: 3px solid var(--wood);
+  padding-left: calc(var(--space-1) + 3px);
+}
+
+/* Close button inside drawer */
+.drawer-close-btn {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.drawer-close-btn:hover {
+  background: rgba(123, 79, 42, 0.2);
+  color: var(--wood);
+  border-color: var(--wood);
+}
+
+/* --- 5. Hamburger Icon Animation --- */
+.hamburger {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger-lines {
+  width: 22px;
+  height: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-lines span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+/* Hamburger → X animation */
+.hamburger.active .hamburger-lines span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active .hamburger-lines span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger.active .hamburger-lines span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --- 6. Enhanced Sticky Header --- */
+header {
+  padding-top: var(--safe-top);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+header.header-scrolled {
+  background: rgba(26, 18, 11, 0.92) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  box-shadow: 0 1px 0 rgba(123, 79, 42, 0.15), 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Desktop nav active link */
+#nav a.active-link {
+  color: var(--wood);
+  position: relative;
+}
+
+#nav a.active-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--wood);
+  border-radius: 1px;
+}
+
+/* --- 7. Card-Based UI System --- */
+.mobile-card {
+  background: rgba(62, 42, 27, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: var(--space-3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.mobile-card:hover {
+  border-color: rgba(123, 79, 42, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Disable hover effects on touch devices */
+@media (hover: none) {
+  .mobile-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .hover-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .hover-card-zoom:hover img {
+    transform: none;
+  }
+}
+
+/* --- 8. Thumb-Friendly CTAs --- */
+.cta-primary,
+.enquire-btn,
+.hero-cta,
+button[type="submit"] {
+  min-height: 48px;
+  padding: var(--space-2) var(--space-3);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  touch-action: manipulation; /* Removes 300ms tap delay */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* --- 9. Floating Action Buttons — Safe Area --- */
+.fab-container {
+  position: fixed;
+  bottom: calc(var(--space-3) + var(--safe-bottom));
+  right: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  z-index: 50;
+}
+
+.fab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fab-btn:hover {
+  transform: scale(1.1);
+}
+
+.fab-btn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 639px) {
+  .fab-btn {
+    width: 48px;
+    height: 48px;
+  }
+  .fab-container {
+    bottom: calc(var(--space-2) + var(--safe-bottom));
+    right: var(--space-2);
+  }
+}
+
+/* --- 10. Section Spacing (Mobile-First) --- */
+section {
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+/* Hero sections on mobile */
+@media (max-width: 639px) {
+  section[class*="h-["],
+  section[style*="min-height"] {
+    min-height: 45vh !important;
+  }
+  .max-w-6xl {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+  }
+}
+
+/* --- 11. Mobile Grid Adjustments --- */
+@media (max-width: 639px) {
+  /* Force single column on small screens */
+  .grid-cols-2 { grid-template-columns: 1fr !important; }
+
+  /* Fix product/category grid items height */
+  .h-64 { height: 14rem; }
+  .h-48 { height: 12rem; }
+
+  /* Ensure all text containers don't overflow */
+  .max-w-4xl,
+  .max-w-3xl,
+  .max-w-2xl {
+    max-width: 100%;
+    padding-left: var(--space-1);
+    padding-right: var(--space-1);
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .md\:grid-cols-5 { grid-template-columns: repeat(3, 1fr) !important; }
+}
+
+/* --- 12. Form Responsiveness --- */
+@media (max-width: 639px) {
+  .premium-input {
+    height: 52px;
+    font-size: 16px !important; /* Prevent iOS zoom */
+  }
+
+  textarea.premium-input {
+    min-height: 100px;
+  }
+
+  .glass-form-card {
+    padding: var(--space-3) !important;
+    border-radius: 12px;
+  }
+
+  /* Full-width buttons on mobile */
+  button[type="submit"],
+  .hero-cta,
+  .cta-primary {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* --- 13. Map Responsiveness --- */
+@media (max-width: 639px) {
+  iframe[src*="maps"] {
+    min-height: 250px;
+    border-radius: 12px;
+  }
+}
+
+/* --- 14. Accessibility --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--wood);
+  outline-offset: 2px;
+}
+
+/* Remove focus ring for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --- 15. Performance --- */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  #mobile-nav-drawer { transition: none; }
+  #drawer-backdrop { transition: none; }
+}
+
+/* --- 16. Landscape Phone Fix --- */
+@media (max-height: 500px) and (orientation: landscape) {
+  section[class*="h-["],
+  section[style*="min-height"] {
+    min-height: 80vh !important;
+  }
+  #mobile-nav-drawer {
+    padding-top: var(--space-3);
+  }
+}

@@ -245,6 +245,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Logic & Events ---
 
+    // --- Debounce Wrapper ---
+    let _debounceTimer = null;
+    function debouncedUpdatePrice() {
+        clearTimeout(_debounceTimer);
+        _debounceTimer = setTimeout(() => updatePrice(), 60);
+    }
+
     function bindStaticDropdowns() {
         // Bind the static dropdowns in contact.html (Type, Material, Finish)
         setupDropdown(document.getElementById('sel-type'), (val) => {
@@ -254,9 +261,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         setupDropdown(document.getElementById('sel-material'), (val) => {
             state.material = val;
+            updatePrice();
         });
         setupDropdown(document.getElementById('sel-finish'), (val) => {
             state.finish = val;
+            updatePrice();
         });
     }
 
@@ -276,6 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
             input.dataset.bound = "1";
 
             input.addEventListener('input', handleInput);
+            input.addEventListener('change', handleInput);
             input.addEventListener('focus', () => updatePrice());
 
             // Helper update on init
@@ -391,7 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
             validateInput(key, state.dimensions[key]);
         }
 
-        updatePrice();
+        debouncedUpdatePrice();
     }
 
     function handleUnitToggle(e) {

@@ -1,28 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Mark body so CSS knows JS loaded — enables reveal animation hiding.
+    // Without this class, all .reveal content stays fully visible.
+    document.body.classList.add('js-reveal');
+
+    initBrandLogo();
     initScrollReveal();
     initHeaderScroll();
     initCounters();
     initStaggerChildren();
 });
 
+// 0. Brand Logo visibility is handled purely by PHP server-side inclusion varying the DOM.
+// No client-side toggle needed.
+
 // 1. Scroll Reveal (Intersection Observer)
 function initScrollReveal() {
     const options = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0,
+        rootMargin: '0px 0px 0px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                // Optional: unobserve if you only want it to animate once
                 observer.unobserve(entry.target);
             }
         });
     }, options);
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => {
+        // Immediately activate elements already in the viewport on page load
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('active');
+        } else {
+            observer.observe(el);
+        }
+    });
 }
 
 // 2. Header Scroll Effect
@@ -48,9 +63,17 @@ function initStaggerChildren() {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0 });
 
-    document.querySelectorAll('.stagger-children').forEach(el => observer.observe(el));
+    document.querySelectorAll('.stagger-children').forEach(el => {
+        // Immediately activate grids already in the viewport
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('active');
+        } else {
+            observer.observe(el);
+        }
+    });
 }
 
 // 4. Number Counters

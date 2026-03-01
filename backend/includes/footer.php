@@ -1,5 +1,5 @@
-<footer class="bg-black/90 text-white py-12 border-t border-white/10 font-sans">
-  <div class="max-w-7xl mx-auto px-4">
+<footer class="bg-black/90 text-white border-t border-white/10 font-sans" style="padding:var(--space-6) 0 calc(var(--space-6) + var(--safe-bottom, 0px))">
+  <div class="max-w-7xl mx-auto" style="padding:0 var(--container-pad, 1rem)">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
       <!-- Visit Us -->
       <div>
@@ -18,7 +18,7 @@
           class="text-lg font-semibold text-[#c08457] mb-2 hover:text-white transition-colors block">+91 93731 54925</a>
         <div>
           <a href="mailto:wavelength.enterprises1972@gmail.com"
-            class="text-gray-400 hover:text-white transition-colors">wavelength.enterprises1972@gmail.com</a>
+            class="text-gray-400 hover:text-white transition-colors" style="word-break:break-all">wavelength.enterprises1972@gmail.com</a>
         </div>
       </div>
       <!-- Opening Hours -->
@@ -32,13 +32,15 @@
     <!-- Socials -->
     <div class="flex justify-center gap-6 mt-10">
       <a href="https://www.instagram.com/wavelength_enterprises?utm_source=qr&igsh=MW45bjk3NmF3end0aA=="
-        class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c08457] hover:text-white transition-colors group"
+        class="flex items-center justify-center hover:bg-[#c08457] hover:text-white transition-colors group"
+        style="width:48px;height:48px;border-radius:9999px;background:rgba(255,255,255,0.1)"
         title="Instagram">
         <i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform"></i>
         <span class="sr-only">Instagram</span>
       </a>
       <a href="https://www.facebook.com/profile.php?id=61586648920840&mibextid=ZbWKwL"
-        class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c08457] hover:text-white transition-colors group"
+        class="flex items-center justify-center hover:bg-[#c08457] hover:text-white transition-colors group"
+        style="width:48px;height:48px;border-radius:9999px;background:rgba(255,255,255,0.1)"
         title="Facebook">
         <i class="fab fa-facebook-f text-xl group-hover:scale-110 transition-transform"></i>
         <span class="sr-only">Facebook</span>
