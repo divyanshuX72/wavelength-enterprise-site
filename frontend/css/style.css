@@ -1,70 +1,10 @@
-﻿/* Primary site styles (migrated from assets/css/styles.css) */
+/* Primary site styles (migrated from assets/css/styles.css) */
 :root {
   --wood: #7b4f2a;
   --wood-dark: #3e2a1b;
   --ease-custom: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
   --base-delay: 100ms;
-}
-
-/* ----------------------------------------------------
-   Animated Brand Logo
-   ---------------------------------------------------- */
-
-/* The "W" badge in the header */
-.brand-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 0.15em;
-  border-radius: 4px;
-  background: linear-gradient(135deg, var(--wood), #a0673a);
-  color: #fff;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 2px 8px rgba(123, 79, 42, 0.35);
-  animation: logoEntrance 0.7s var(--ease-elastic) forwards,
-    logoPulse 3s ease-in-out 1.2s infinite;
-  transform-origin: center;
-}
-
-/* Hide logo on home page */
-.brand-logo.logo-hidden {
-  display: none !important;
-}
-
-/* Entrance: scale up + fade in from the left */
-@keyframes logoEntrance {
-  0% {
-    opacity: 0;
-    transform: scale(0.4) translateX(-12px);
-  }
-
-  60% {
-    opacity: 1;
-    transform: scale(1.12) translateX(0);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1) translateX(0);
-  }
-}
-
-/* Subtle glow pulse to keep it alive */
-@keyframes logoPulse {
-
-  0%,
-  100% {
-    box-shadow: 0 2px 8px rgba(123, 79, 42, 0.35);
-  }
-
-  50% {
-    box-shadow: 0 2px 16px rgba(123, 79, 42, 0.55), 0 0 24px rgba(123, 79, 42, 0.15);
-  }
 }
 
 /* ----------------------------------------------------
@@ -125,15 +65,14 @@ header.header-scrolled nav {
 }
 
 /* Base Reveal Class (Intersection Observer) */
-/* Only hide reveal elements when JS has loaded (body.js-reveal) */
-.js-reveal .reveal {
+.reveal {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s var(--ease-custom), transform 0.8s var(--ease-custom);
   will-change: opacity, transform;
 }
 
-.reveal.active, .js-reveal .reveal.active {
+.reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
@@ -158,7 +97,7 @@ header.header-scrolled nav {
 }
 
 /* Stagger Utilities */
-.js-reveal .stagger-children > * {
+.stagger-children>* {
   opacity: 0;
 }
 
@@ -333,35 +272,7 @@ option {
   background: #555;
 }
 
-/* Scroll Animations */
-.js-reveal .reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-}
-
-.reveal.active, .js-reveal .reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal.fade-left {
-  transform: translateX(-30px);
-}
-
-.reveal.fade-right {
-  transform: translateX(30px);
-}
-
-.reveal.zoom-in {
-  transform: scale(0.95);
-}
-
-.reveal.active.fade-left,
-.reveal.active.fade-right,
-.reveal.active.zoom-in {
-  transform: translate(0) scale(1);
-}
+/* Scroll Animations — see lines 68–97 for .reveal system */
 
 /* Staggered delays for grid items */
 .stagger-1 {
@@ -471,7 +382,7 @@ option {
 }
 
 .custom-select-wrapper::after {
-  content: 'â–¼';
+  content: '▼';
   font-size: 0.8rem;
   position: absolute;
   right: 1rem;
@@ -664,3 +575,454 @@ option {
   -webkit-backdrop-filter: blur(10px);
 }
 
+/* Map Wrapper Size Fix */
+.map-wrapper {
+  width: 100%;
+  max-width: 408px;
+  height: 404px;
+  margin: 24px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ============================================================
+   PREMIUM FOOTER — Wavelength Enterprises
+   Color System:
+     BG:      #0F1115 → #2B1F1A (gradient)
+     Accent:  #C08457 (Copper Gold)
+     Glow:    #F59E0B (Amber hover)
+     Text:    #A8B0BC
+     Heads:   #FFFFFF
+   ============================================================ */
+
+/* Animated gradient top accent line */
+.wl-footer-topline {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C08457, #F59E0B, #C08457, transparent);
+  background-size: 200% 100%;
+  animation: wlFooterShimmer 4s ease-in-out infinite;
+}
+
+@keyframes wlFooterShimmer {
+  0% {
+    background-position: 100% 0;
+  }
+
+  50% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+/* Footer container */
+.wl-footer {
+  background: linear-gradient(180deg, #0F1115 0%, #1a1510 50%, #2B1F1A 100%);
+  color: #A8B0BC;
+  font-family: 'Inter', 'Outfit', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+/* Remove large gap above footer from main content */
+#footer-container {
+  margin-top: 0;
+}
+
+/* Kill all bottom spacing on main so footer sits close */
+main {
+  padding-bottom: 0 !important;
+}
+
+main::after {
+  display: none !important;
+  height: 0 !important;
+}
+
+/* Subtle warm radial glow at top center */
+.wl-footer::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 120px;
+  background: radial-gradient(ellipse, rgba(192, 132, 87, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.wl-footer-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 28px 1.25rem;
+}
+
+/* 3-Column Grid */
+.wl-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+/* Column */
+.wl-footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Heading with icon */
+.wl-footer-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.wl-footer-hicon {
+  width: 20px;
+  height: 20px;
+  color: #C08457;
+  flex-shrink: 0;
+}
+
+/* Address link */
+.wl-footer-address {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  color: #A8B0BC;
+  text-decoration: none;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  transition: color 0.3s ease;
+}
+
+.wl-footer-address:hover {
+  color: #C08457;
+}
+
+/* Contact items list */
+.wl-footer-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.wl-footer-citem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #A8B0BC;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+/* Phone number — larger for emphasis */
+.wl-footer-citem:first-child {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #d4dae2;
+}
+
+.wl-footer-citem:hover {
+  color: #FFFFFF;
+}
+
+.wl-footer-cicon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.wl-footer-citem:hover .wl-footer-cicon {
+  opacity: 1;
+  color: #C08457;
+}
+
+/* WhatsApp link accent */
+.wl-footer-wa .wl-footer-cicon {
+  color: #25D366;
+  opacity: 0.65;
+}
+
+.wl-footer-wa:hover {
+  color: #25D366;
+}
+
+.wl-footer-wa:hover .wl-footer-cicon {
+  opacity: 1;
+  color: #25D366;
+}
+
+/* Opening hours */
+.wl-footer-hours {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: 240px;
+}
+
+.wl-footer-hrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  padding: 3px 0;
+}
+
+.wl-footer-hday {
+  color: #A8B0BC;
+}
+
+.wl-footer-htime {
+  color: #d4d4d4;
+  font-weight: 500;
+}
+
+.wl-footer-closed {
+  color: #ef4444 !important;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+}
+
+/* Social icons */
+.wl-footer-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.wl-footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #A8B0BC;
+  transition: all 0.3s ease;
+}
+
+.wl-footer-social svg {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.3s ease;
+}
+
+.wl-footer-social:hover {
+  background: rgba(192, 132, 87, 0.18);
+  border-color: rgba(192, 132, 87, 0.4);
+  color: #F59E0B;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 6px 24px rgba(245, 158, 11, 0.25), 0 0 12px rgba(192, 132, 87, 0.15);
+}
+
+.wl-footer-social:hover svg {
+  transform: scale(1.1);
+}
+
+/* Bottom / copyright */
+.wl-footer-bottom {
+  margin-top: 18px;
+}
+
+.wl-footer-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(192, 132, 87, 0.12), transparent);
+}
+
+.wl-footer-copy {
+  text-align: center;
+  font-size: 0.72rem;
+  color: #555d68;
+  margin-top: 12px;
+  letter-spacing: 0.03em;
+}
+
+/* ─── Footer Responsive (self-contained, no responsive.css edits) ─── */
+@media (max-width: 767px) {
+  #footer-container {
+    margin-top: 24px;
+  }
+
+  .wl-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .wl-footer-inner {
+    padding: 22px 18px 16px;
+  }
+
+  .wl-footer-heading {
+    font-size: 0.82rem;
+  }
+
+  .wl-footer-contacts {
+    align-items: center;
+  }
+
+  .wl-footer-hours {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .wl-footer-socials {
+    margin-top: 16px;
+  }
+
+  .wl-footer-bottom {
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wl-footer-inner {
+    padding: 20px 14px 14px;
+  }
+
+  .wl-footer-heading {
+    font-size: 0.76rem;
+  }
+
+  .wl-footer-address,
+  .wl-footer-citem,
+  .wl-footer-hrow {
+    font-size: 0.78rem;
+  }
+
+  .wl-footer-citem:first-child {
+    font-size: 0.86rem;
+  }
+
+  .wl-footer-social {
+    width: 36px;
+    height: 36px;
+  }
+
+  .wl-footer-social svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ANIMATED BRAND LOGO
+   ═══════════════════════════════════════════════════════════ */
+.animated-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  text-decoration: none;
+}
+
+.animated-w-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: #a66a38;
+  /* Match the brown from image */
+  border-radius: 6px;
+  color: #ffffff !important;
+  font-weight: 900;
+  font-size: 20px;
+  font-family: 'Outfit', sans-serif;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  margin-right: 2px;
+}
+
+/* Subtle glowing aura animation */
+.animated-w-box::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: #a66a38;
+  border-radius: 6px;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  filter: blur(8px);
+  animation: wPulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes wPulse {
+  0% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1.45);
+  }
+}
+
+.animated-text-group {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.15rem;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.animated-text-main {
+  color: #ffffff;
+}
+
+.animated-text-sub {
+  color: #a66a38;
+  margin-left: 6px;
+}
+
+/* Responsive sizes */
+@media (min-width: 640px) {
+  .animated-w-box {
+    width: 34px;
+    height: 34px;
+    font-size: 24px;
+    border-radius: 8px;
+  }
+
+  .animated-text-group {
+    font-size: 1.4rem;
+  }
+}

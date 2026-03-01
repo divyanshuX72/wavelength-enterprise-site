@@ -29,7 +29,7 @@
 <body class="bg-wood-dark text-gray-100 antialiased font-sans">
   <?php require_once 'backend/includes/header.php'; ?>
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-0">
     <div class="text-center mb-16">
       <h1 class="text-4xl font-bold mb-4">Our Services</h1>
       <p class="text-muted text-lg max-w-2xl mx-auto">We specialize in crafting premium custom furniture and modular
@@ -40,32 +40,32 @@
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
       <?php
       require_once 'backend/config/db_connection.php';
-      
+
       $sql = "SELECT * FROM services ORDER BY id ASC";
       $result = $conn->query($sql);
-      
+
       if ($result->num_rows > 0) {
-          $delay = 100;
-          while($row = $result->fetch_assoc()) {
-              $title = htmlspecialchars($row["title"]);
-              $desc = htmlspecialchars($row["description"]);
-              // Icon is stored as SVG string, so we echo it directly (be careful if user input allowed, but here it's admin/seeded)
-              $icon = $row["icon"]; 
+        $delay = 100;
+        while ($row = $result->fetch_assoc()) {
+          $title = htmlspecialchars($row["title"] ?? '');
+          $desc = htmlspecialchars($row["short_description"] ?? '');
+          // Icon is stored as SVG string, so we echo it directly (be careful if user input allowed, but here it's admin/seeded)
+          $icon = $row["icon_svg"] ?? '';
       ?>
-      <div
-        class="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-white/10 transition-colors group reveal fade-up delay-<?php echo $delay; ?> hover-lift">
-        <div
-          class="w-12 h-12 bg-wood/20 rounded-full flex items-center justify-center mb-4 text-wood group-hover:bg-wood group-hover:text-black transition-all duration-300 group-hover:scale-110">
-          <?php echo $icon; ?>
-        </div>
-        <h3 class="text-xl font-semibold mb-2"><?php echo $title; ?></h3>
-        <p class="text-gray-400 text-sm"><?php echo $desc; ?></p>
-      </div>
+          <div
+            class="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-white/10 transition-colors group reveal fade-up delay-<?php echo $delay; ?> hover-lift">
+            <div
+              class="w-12 h-12 bg-wood/20 rounded-full flex items-center justify-center mb-4 text-wood group-hover:bg-wood group-hover:text-black transition-all duration-300 group-hover:scale-110">
+              <?php echo $icon; ?>
+            </div>
+            <h3 class="text-xl font-semibold mb-2"><?php echo $title; ?></h3>
+            <p class="text-gray-400 text-sm"><?php echo $desc; ?></p>
+          </div>
       <?php
-              $delay += 100;
-          }
+          $delay += 100;
+        }
       } else {
-          echo '<div class="col-span-full text-center text-gray-400">No services found.</div>';
+        echo '<div class="col-span-full text-center text-gray-400">No services found.</div>';
       }
       $conn->close();
       ?>
@@ -290,15 +290,11 @@
 
   </main>
 
-  <div id="footer-container"></div>
+  <?php require_once 'backend/includes/footer.php'; ?>
   <script>
-    fetch('includes/footer.php')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-        // Update year
-        document.getElementById('year').textContent = new Date().getFullYear();
-      });
+    // Update year for static PHP footer if needed
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
   </script>
   <script src="frontend/js/main.js"></script>
   <script src="frontend/js/animations.js"></script>

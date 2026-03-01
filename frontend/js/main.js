@@ -17,63 +17,73 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
-  // Header is already included server-side via PHP require_once in each page.
-  // Only the footer needs to be loaded via JS for pages using the footer-container div.
+  loadComponent('header-container', 'backend/includes/header.php');
   loadComponent('footer-container', 'backend/includes/footer.php');
 
   // Year
   const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
-
-  // === Mobile Drawer Menu System ===
+  // Mobile Drawer Menu System
   const menuBtn = document.getElementById('menu-btn');
-  const drawer = document.getElementById('mobile-nav-drawer');
-  const backdrop = document.getElementById('drawer-backdrop');
-  const drawerClose = document.getElementById('drawer-close');
-  let scrollPos = 0;
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileOverlay = document.getElementById('mobile-overlay');
+  const siteHeader = document.getElementById('site-header');
 
-  function openDrawer() {
-    if (!drawer || !backdrop) return;
-    scrollPos = window.scrollY;
+  const openDrawer = () => {
     document.body.classList.add('drawer-open');
-    document.body.style.top = -scrollPos + 'px';
-    drawer.classList.add('open');
-    backdrop.classList.add('open');
-    if (menuBtn) { menuBtn.classList.add('active'); menuBtn.setAttribute('aria-expanded', 'true'); }
-  }
+    if (siteHeader) siteHeader.classList.add('drawer-open');
+    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+    // Store scroll position before locking
+    document.body.dataset.scrollY = window.scrollY;
+    document.body.style.top = `-${window.scrollY}px`;
+  };
 
-  function closeDrawer() {
-    if (!drawer || !backdrop) return;
-    drawer.classList.remove('open');
-    backdrop.classList.remove('open');
+  const closeDrawer = () => {
     document.body.classList.remove('drawer-open');
+    if (siteHeader) siteHeader.classList.remove('drawer-open');
+    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+    // Restore scroll position
+    const scrollY = document.body.dataset.scrollY || '0';
     document.body.style.top = '';
-    window.scrollTo(0, scrollPos);
-    if (menuBtn) { menuBtn.classList.remove('active'); menuBtn.setAttribute('aria-expanded', 'false'); }
+    window.scrollTo(0, parseInt(scrollY));
+  };
+
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      const isOpen = document.body.classList.contains('drawer-open');
+      isOpen ? closeDrawer() : openDrawer();
+    });
   }
 
-  if (menuBtn) menuBtn.addEventListener('click', function () {
-    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
-  });
-  if (backdrop) backdrop.addEventListener('click', closeDrawer);
-  if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+  // Close drawer when clicking overlay
+  if (mobileOverlay) {
+    mobileOverlay.addEventListener('click', closeDrawer);
+  }
 
   // Close drawer on Escape key
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) closeDrawer();
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('drawer-open')) {
+      closeDrawer();
+    }
   });
 
-  // Close drawer when a nav link is clicked
-  if (drawer) {
-    drawer.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        setTimeout(closeDrawer, 100);
+  // Close drawer when a nav link is clicked and ensure navigation
+  if (mobileDrawer) {
+    mobileDrawer.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        closeDrawer();
+        // Brief delay for drawer close animation, then navigate
+        setTimeout(() => {
+          window.location.href = href;
+        }, 150);
       });
     });
   }
 
-  // Legacy mobile-nav support (hide old element if present)
-  const oldMobileNav = document.getElementById('mobile-nav');
-  if (oldMobileNav) oldMobileNav.style.display = 'none';
+  // Update drawer year
+  const drawerYear = document.getElementById('drawer-year');
+  if (drawerYear) drawerYear.textContent = new Date().getFullYear();
   // Enquire buttons -> prefill contact form product field and navigate
   document.querySelectorAll('.enquire-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -587,15 +597,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Feature 13: Visual Polish & Animations
-  // Note: .reveal animation is handled by animations.js (IntersectionObserver).
-  // This is a safety fallback to ensure any missed elements become visible.
-  setTimeout(() => {
-    document.querySelectorAll('.reveal:not(.active)').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        el.classList.add('active');
+  // Feature 13: Visual Polish & Animations (Intersection Observer)
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        // Optional: Stop observing once revealed
+        // observer.unobserve(entry.target);
       }
     });
-  }, 300);
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    observer.observe(el);
+  });
 });

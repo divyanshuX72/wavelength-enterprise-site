@@ -265,6 +265,12 @@
 .calc-select-wrapper {
     position: relative;
     width: 100%;
+    margin-bottom: 16px;
+    z-index: 10;
+}
+
+.calc-select-wrapper.open {
+    z-index: 9999;
 }
 
 /* Arrow */
@@ -283,7 +289,7 @@
 /* Dropdown Menu */
 .calc-dropdown-menu {
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 4px);
     left: 0;
     width: 100%;
     background: #1a1614;
@@ -291,12 +297,12 @@
     border: 1px solid rgba(123, 79, 42, 0.3);
     border-radius: 12px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
-    z-index: 100;
+    z-index: 9999;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    max-height: 280px;
+    max-height: 320px;
     overflow-y: auto;
 }
 
@@ -493,124 +499,4 @@
 
 .calc-input:invalid {
     border-color: #ef4444;
-}
-
-/* ===== MOBILE-COMPACT OVERRIDES ===== */
-@media (max-width: 639px) {
-
-    /* Calculator card — remove desktop min-height */
-    .glass-calculator-card {
-        border-radius: 14px;
-        min-height: auto !important;
-    }
-
-    /* Config panel: halve the padding */
-    .calc-config-panel {
-        padding: 16px !important;
-    }
-
-    /* Section title: tighter spacing */
-    .calc-section-title {
-        gap: 10px;
-        margin-bottom: 14px !important;
-    }
-
-    .calc-icon-circle {
-        width: 36px;
-        height: 36px;
-        min-width: 36px;
-    }
-
-    .calc-icon-circle svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    /* Grid gap: tight */
-    .calc-grid {
-        gap: 10px !important;
-    }
-
-    /* Dimension input cards: compact */
-    .calc-field-group .rounded-xl {
-        min-height: 72px !important;
-        padding: 10px 12px !important;
-    }
-
-    .calc-input {
-        font-size: 1.25rem !important;
-    }
-
-    /* Select triggers: smaller */
-    .calc-select-trigger {
-        min-height: 46px !important;
-        padding: 8px 12px !important;
-        border-radius: 10px !important;
-    }
-
-    /* Estimate panel: compact */
-    .calc-estimate-panel {
-        padding: 20px 16px !important;
-    }
-
-    .live-badge {
-        margin-bottom: 10px;
-        padding: 4px 10px;
-        font-size: 0.65rem;
-    }
-
-    .price-display {
-        font-size: 2.5rem !important;
-        margin-bottom: 4px;
-    }
-
-    .currency-symbol {
-        font-size: 1.4rem;
-        margin-top: 5px;
-    }
-
-    /* Breakdown: compact */
-    .breakdown-list {
-        margin-top: 14px;
-        padding-top: 10px;
-        gap: 8px;
-    }
-
-    .breakdown-row {
-        font-size: 0.8rem;
-    }
-
-    /* Trust row: compact */
-    .trust-row {
-        padding-top: 14px;
-    }
-
-    .trust-item {
-        font-size: 0.58rem;
-        gap: 3px;
-    }
-
-    .trust-item svg {
-        width: 16px;
-        height: 16px;
-    }
-
-    /* Book button */
-    #btn-save-quote {
-        margin-top: 16px !important;
-        padding: 12px !important;
-        font-size: 0.9rem;
-        border-radius: 10px !important;
-    }
-
-    /* Unit toggle: compact */
-    .calc-unit-group {
-        padding: 2px;
-        margin-left: 4px;
-    }
-
-    .calc-unit-btn {
-        padding: 3px 8px;
-        font-size: 0.7rem;
-    }
 }
