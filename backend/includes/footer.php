@@ -79,7 +79,7 @@
 
     <!-- Social Icons -->
     <div class="wl-footer-socials">
-      <a href="https://www.instagram.com/wavelength_enterprises?utm_source=qr&igsh=MW45bjk3NmF3end0aA=="
+      <a href="https://www.instagram.com/wavelengthenterprises.in"
         target="_blank" rel="noopener noreferrer" class="wl-footer-social" title="Instagram" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="2" width="20" height="20" rx="5" />
