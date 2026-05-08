@@ -1,6 +1,6 @@
 # Wavelength Enterprises — Premium Furniture & Interior Design Platform
 
-## 📌 Project Overview
+## 📌 Project Overview 
 **Wavelength Enterprises** is a modern, dynamic web application designed for a premium custom furniture manufacturer. It bridges the gap between traditional craftsmanship and digital innovation by offering users an intuitive platform to browse catalogs, calculate EMI options, schedule consultations, and interact with an **AI-powered Interior Design Assistant**.
 
 This project leverages a **Hybrid Architecture**:
